@@ -1,0 +1,50 @@
+.settings {
+  text-align: center;
+  padding: 50px;
+  color: #fff8dc;
+}
+
+.heading {
+  margin-bottom: 40px;
+  font-size: 50px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 40px;
+  font-size: 30px;
+  line-height: 100%;
+}
+
+.item {
+  margin-bottom: 10px;
+  width: 200px;
+  padding: 15px;
+  border-radius: 5px;
+  color: #000000;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.item:hover {
+  box-shadow: 5px 5px #000000;
+}
+
+.button {
+  width: 470px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 100%;
+  background-color: #cfcfcf;
+}
+
+.button:hover {
+  background-color: #d2d2d2;
+}
