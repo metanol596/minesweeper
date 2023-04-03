@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import s from './gameSettings.module.css';
 
@@ -21,7 +22,9 @@ function GameSettings() {
           </li>
         ))}
       </ul>
-      <button className={s.button}>Играть</button>
+      <Link to={'/game'} className={s.button}>
+        Играть
+      </Link>
     </section>
   );
 }
