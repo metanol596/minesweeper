@@ -1,3 +1,22 @@
 .game {
   height: 100vh;
 }
+
+.toSettingsButton {
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 100%;
+  color: #000000;
+  background-color: #cfcfcf;
+}
+
+.toSettingsButton:hover {
+  background-color: #d2d2d2;
+}
