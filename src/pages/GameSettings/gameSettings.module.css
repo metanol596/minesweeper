@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 30px;
   line-height: 100%;
 }
@@ -31,6 +31,25 @@
 
 .item:hover {
   box-shadow: 5px 5px #000000;
+}
+
+.currLevel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 230px;
+  margin: 0 auto 30px;
+}
+
+.settingItemText {
+  margin-bottom: 10px;
+}
+
+.settingText {
+  background-color: #766d6d;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 5px;
 }
 
 .button {
