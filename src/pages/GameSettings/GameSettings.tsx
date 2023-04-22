@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import s from './gameSettings.module.css';
+
+interface GameSettingsProps {
+  setMinesCount: (item: number) => void;
+}
 
 interface Level {
   level: string;
@@ -15,8 +19,12 @@ const GAME_LEVELS: Level[] = [
   { level: 'Сложный', cells: '32x16', mine: 100 },
 ];
 
-function GameSettings() {
+function GameSettings({ setMinesCount }: GameSettingsProps) {
   const [currentLevel, setCurrentLevel] = useState<Level>(GAME_LEVELS[0]);
+
+  useEffect(() => {
+    setMinesCount(currentLevel.mine);
+  }, [currentLevel.mine, setMinesCount]);
 
   const handleLevelClick = (level: Level) => {
     setCurrentLevel(level);
