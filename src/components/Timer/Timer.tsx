@@ -16,6 +16,10 @@ function Timer() {
       }
     }, 1000);
 
+    if (minutes === 59 && seconds === 59) {
+      clearInterval(timer);
+    }
+
     return () => clearInterval(timer);
   });
 
