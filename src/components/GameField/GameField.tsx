@@ -4,9 +4,10 @@ import s from './gameField.module.css';
 
 interface GameFieldProps {
   cellsCount: number;
+  handleCellClick: () => void;
 }
 
-function GameField({ cellsCount }: GameFieldProps): JSX.Element {
+function GameField({ cellsCount, handleCellClick }: GameFieldProps): JSX.Element {
   return (
     <div
       className={cn(s.field, {
@@ -15,7 +16,7 @@ function GameField({ cellsCount }: GameFieldProps): JSX.Element {
         [s.third]: cellsCount === 32 * 16,
       })}>
       {Array.from({ length: cellsCount }, (_, i) => (
-        <div key={i} className={s.cell}></div>
+        <div key={i} className={s.cell} onClick={handleCellClick}></div>
       ))}
     </div>
   );
