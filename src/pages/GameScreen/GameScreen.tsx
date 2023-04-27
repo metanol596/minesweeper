@@ -19,11 +19,16 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
     setIsGameStart(true);
   };
 
+  const handleRestartClick = () => {
+    setIsGameStart(false);
+  };
+
   return (
     <section className={s.game}>
       <Link to={'/'} className={s.toSettingsButton}>
         To settings
       </Link>
+      <button onClick={handleRestartClick}>Restart</button>
       <Timer isGameStart={isGameStart} />
       Счётчик: {minesCount - FLAG_COUNT}
       <GameField cellsCount={cellsCount} handleCellClick={handleCellClick} />

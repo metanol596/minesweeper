@@ -25,6 +25,9 @@ function Timer({ isGameStart }: TimerProps): JSX.Element {
         clearInterval(timer);
       }
       return () => clearInterval(timer);
+    } else {
+      setSeconds(0);
+      setMinutes(0);
     }
   });
 
