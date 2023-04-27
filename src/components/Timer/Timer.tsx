@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import s from './timer.module.css';
 
-function Timer() {
+function Timer(): JSX.Element {
   const [seconds, setSeconds] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
 

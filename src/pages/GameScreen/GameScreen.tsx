@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
-import { Timer } from '../../components';
+import { GameField, Timer } from '../../components';
 
 import s from './gameScreen.module.css';
 
 interface GameScreenProps {
   minesCount: number;
+  cellsCount: number;
 }
 
 const FLAG_COUNT = 0;
 
-function GameScreen({ minesCount }: GameScreenProps) {
+function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
   console.log(minesCount);
   return (
     <section className={s.game}>
@@ -18,6 +19,7 @@ function GameScreen({ minesCount }: GameScreenProps) {
       </Link>
       <Timer />
       Счётчик: {minesCount - FLAG_COUNT}
+      <GameField cellsCount={cellsCount} />
     </section>
   );
 }

@@ -1,0 +1,22 @@
+.field {
+  display: grid;
+}
+
+.first {
+  grid-template-columns: repeat(8, fit-content(10px));
+}
+
+.second {
+  grid-template-columns: repeat(16, fit-content(10px));
+}
+
+.third {
+  grid-template-columns: repeat(32, fit-content(10px));
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000000;
+  background-color: #b9b9b9;
+}
