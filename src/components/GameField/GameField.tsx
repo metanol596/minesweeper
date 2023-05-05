@@ -1,5 +1,7 @@
 import cn from 'classnames';
 
+import { ReactComponent as MineIcon } from './mine.svg';
+
 import s from './gameField.module.css';
 
 interface GameFieldProps {
@@ -18,6 +20,7 @@ function GameField({ cellsCount, handleCellClick }: GameFieldProps): JSX.Element
       {Array.from({ length: cellsCount }, (_, i) => (
         <div key={i} className={s.cell} onClick={handleCellClick}></div>
       ))}
+      <MineIcon width={18} height={18} />
     </div>
   );
 }
