@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { GameField, Timer } from '../../components';
@@ -14,15 +14,18 @@ const FLAG_COUNT = 0;
 
 function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
   const [isGameStart, setIsGameStart] = useState<boolean>(false);
-  //const [isCellClick, setIsCellClick] = useState<boolean>(false);
+  const [randomMines, setRandomMines] = useState<number[]>([]);
 
-  //let randomMines = Array.from({ length: cellsCount }, (_, i) => i)
-  //  .sort(() => Math.random() - 0.5)
-  //  .slice(0, minesCount);
+  useEffect(() => {
+    let randomMines = Array.from({ length: cellsCount }, (_, i) => i)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, minesCount);
+
+    setRandomMines(randomMines);
+  }, []);
 
   const handleCellClick = () => {
     setIsGameStart(true);
-    //setIsCellClick(true);
   };
 
   const handleRestartClick = () => {
@@ -41,8 +44,7 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
         cellsCount={cellsCount}
         minesCount={minesCount}
         handleCellClick={handleCellClick}
-        //isCellClick={isCellClick}
-        //randomMines={randomMines}
+        randomMines={randomMines}
       />
     </section>
   );
