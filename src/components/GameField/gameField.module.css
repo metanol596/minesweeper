@@ -15,8 +15,29 @@
 }
 
 .cell {
+  position: relative;
   width: 20px;
   height: 20px;
   border: 1px solid #000000;
   background-color: #b9b9b9;
+  cursor: pointer;
+}
+
+.cell:hover {
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+}
+
+.cell:active {
+  background-color: #a8a8a8;
+}
+
+.mine {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  top: 1px;
+  left: 1px;
 }

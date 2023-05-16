@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import cn from 'classnames';
 
 import { ReactComponent as MineIcon } from './mine.svg';
@@ -6,10 +7,19 @@ import s from './gameField.module.css';
 
 interface GameFieldProps {
   cellsCount: number;
-  handleCellClick: () => void;
+  minesCount?: number;
+  handleCellClick?: () => void;
+  isCellClick?: boolean;
+  randomMines?: number[];
 }
 
-function GameField({ cellsCount, handleCellClick }: GameFieldProps): JSX.Element {
+function GameField({
+  cellsCount,
+}: //minesCount,
+//handleCellClick,
+//isCellClick,
+//randomMines,
+GameFieldProps): JSX.Element {
   return (
     <div
       className={cn(s.field, {
@@ -18,9 +28,8 @@ function GameField({ cellsCount, handleCellClick }: GameFieldProps): JSX.Element
         [s.third]: cellsCount === 32 * 16,
       })}>
       {Array.from({ length: cellsCount }, (_, i) => (
-        <div key={i} className={s.cell} onClick={handleCellClick}></div>
+        <button key={i} className={s.cell} />
       ))}
-      <MineIcon width={18} height={18} />
     </div>
   );
 }
