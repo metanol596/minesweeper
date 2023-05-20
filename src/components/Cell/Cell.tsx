@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import cn from 'classnames';
+import { useEffect, useState } from 'react';
 
 import { ReactComponent as MineIcon } from './mine.svg';
 
@@ -11,14 +10,24 @@ interface CellProps {
   minesCount: number;
   randomMines: number[];
   index: number;
+  isGameStart: boolean;
 }
 
-function Cell({ handleCellClick, randomMines, index }: CellProps): JSX.Element {
+function Cell({ handleCellClick, randomMines, index, isGameStart }: CellProps): JSX.Element {
   const [isMine, setIsMine] = useState<boolean>(false);
-
+  console.log(isGameStart);
+  console.log(isMine, index, randomMines[index]);
   const handleMineClick = () => {
-    if (randomMines.includes(index)) setIsMine(true);
+    if (isGameStart && randomMines.includes(index)) {
+      setIsMine(true);
+    }
   };
+
+  useEffect(() => {
+    if (!isGameStart) {
+      setIsMine(false);
+    }
+  }, [isGameStart]);
 
   return (
     <button
@@ -27,7 +36,7 @@ function Cell({ handleCellClick, randomMines, index }: CellProps): JSX.Element {
         handleCellClick();
         handleMineClick();
       }}>
-      {isMine && <MineIcon className={s.mine} width={17} height={17} />}
+      {randomMines.length !== 0 && isMine && <MineIcon className={s.mine} width={17} height={17} />}
     </button>
   );
 }

@@ -10,6 +10,7 @@ interface GameFieldProps {
   minesCount: number;
   handleCellClick: () => void;
   randomMines: number[];
+  isGameStart: boolean;
 }
 
 function GameField({
@@ -17,6 +18,7 @@ function GameField({
   handleCellClick,
   minesCount,
   randomMines,
+  isGameStart,
 }: GameFieldProps): JSX.Element {
   return (
     <div
@@ -33,6 +35,7 @@ function GameField({
           minesCount={minesCount}
           randomMines={randomMines}
           index={i}
+          isGameStart={isGameStart}
         />
       ))}
     </div>

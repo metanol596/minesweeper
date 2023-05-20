@@ -24,6 +24,7 @@ function Timer({ isGameStart }: TimerProps): JSX.Element {
       if (minutes === 59 && seconds === 59) {
         clearInterval(timer);
       }
+
       return () => clearInterval(timer);
     } else {
       setSeconds(0);
