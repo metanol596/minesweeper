@@ -1,5 +1,6 @@
 .field {
   display: grid;
+  margin-top: 10px;
 }
 
 .first {

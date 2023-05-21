@@ -30,7 +30,7 @@
 }
 
 .item:hover {
-  box-shadow: 5px 5px #000000;
+  box-shadow: 3px 3px 1px #000000;
 }
 
 .currLevel {

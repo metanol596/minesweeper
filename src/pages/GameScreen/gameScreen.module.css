@@ -1,8 +1,18 @@
 .game {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
 }
 
-.toSettingsButton {
+.gap {
+  display: flex;
+  gap: 10px;
+}
+
+.toSettingsButton,
+.restartButton {
   display: inline-block;
   width: 150px;
   padding: 10px;
@@ -17,6 +27,15 @@
   background-color: #cfcfcf;
 }
 
-.toSettingsButton:hover {
-  background-color: #d2d2d2;
+.toSettingsButton:hover,
+.restartButton:hover {
+  background-color: #dcdada;
+}
+
+.count {
+  background-color: #766d6d;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 5px;
+  color: #fff8dc;
 }

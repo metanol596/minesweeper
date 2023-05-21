@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { GameField, Timer } from '../../components';
@@ -16,10 +16,6 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
   const [isGameStart, setIsGameStart] = useState<boolean>(false);
   const [randomMines, setRandomMines] = useState<number[]>([]);
 
-  //useEffect(() => {
-
-  //}, [setRandomMines]);
-
   const handleCellClick = () => {
     if (!isGameStart) {
       let randomMines = Array.from({ length: cellsCount }, (_, i) => i)
@@ -36,15 +32,19 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
     setIsGameStart(false);
     setRandomMines([]);
   };
-  console.log(randomMines);
+
   return (
     <section className={s.game}>
-      <Link to={'/'} className={s.toSettingsButton}>
-        To settings
-      </Link>
-      <button onClick={handleRestartClick}>Restart</button>
+      <div className={s.gap}>
+        <Link to={'/'} className={s.toSettingsButton}>
+          To settings
+        </Link>
+        <button className={s.restartButton} onClick={handleRestartClick}>
+          Restart
+        </button>
+      </div>
       <Timer isGameStart={isGameStart} />
-      Счётчик: {minesCount - FLAG_COUNT}
+      <div className={s.count}>{minesCount - FLAG_COUNT}</div>
       <GameField
         cellsCount={cellsCount}
         minesCount={minesCount}
