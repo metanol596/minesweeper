@@ -26,14 +26,8 @@ function Cell({
 }: CellProps): JSX.Element {
   const [isMine, setIsMine] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (!isGameStart) {
-      setIsMine(false);
-    }
-  }, [isGameStart]);
-
   const handleMineClick = () => {
-    if (isGameStart && randomMines.includes(index)) {
+    if (randomMines.includes(index)) {
       setIsMine(true);
       setIsGameStart(false);
       setIsFieldBlock(true);
@@ -47,7 +41,7 @@ function Cell({
         handleCellClick();
         handleMineClick();
       }}>
-      {randomMines.length !== 0 && isMine && <MineIcon className={s.mine} width={19} height={19} />}
+      {isMine && <MineIcon className={s.mine} width={19} height={19} />}
     </button>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import cn from 'classnames';
 
 import Cell from '../Cell/Cell';
