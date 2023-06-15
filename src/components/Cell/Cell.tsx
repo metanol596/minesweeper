@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import cn from 'classnames';
 
 import { ReactComponent as MineIcon } from './mine.svg';
 
@@ -11,17 +12,19 @@ interface CellProps {
   randomMines: number[];
   index: number;
   isGameStart: boolean;
+  setIsGameStart: (f: boolean) => void;
+  setIsFieldBlock: (f: boolean) => void;
 }
 
-function Cell({ handleCellClick, randomMines, index, isGameStart }: CellProps): JSX.Element {
+function Cell({
+  handleCellClick,
+  randomMines,
+  index,
+  isGameStart,
+  setIsGameStart,
+  setIsFieldBlock,
+}: CellProps): JSX.Element {
   const [isMine, setIsMine] = useState<boolean>(false);
-  console.log(isGameStart);
-  console.log(isMine, index, randomMines[index]);
-  const handleMineClick = () => {
-    if (isGameStart && randomMines.includes(index)) {
-      setIsMine(true);
-    }
-  };
 
   useEffect(() => {
     if (!isGameStart) {
@@ -29,14 +32,22 @@ function Cell({ handleCellClick, randomMines, index, isGameStart }: CellProps): 
     }
   }, [isGameStart]);
 
+  const handleMineClick = () => {
+    if (isGameStart && randomMines.includes(index)) {
+      setIsMine(true);
+      //setIsGameStart(false);
+      setIsFieldBlock(true);
+    }
+  };
+
   return (
     <button
-      className={s.cell}
+      className={cn(s.cell, { [s.isMine]: isMine })}
       onClick={() => {
         handleCellClick();
         handleMineClick();
       }}>
-      {randomMines.length !== 0 && isMine && <MineIcon className={s.mine} width={17} height={17} />}
+      {randomMines.length !== 0 && isMine && <MineIcon className={s.mine} width={19} height={19} />}
     </button>
   );
 }

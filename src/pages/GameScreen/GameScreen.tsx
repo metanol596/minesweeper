@@ -51,6 +51,7 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
         handleCellClick={handleCellClick}
         randomMines={randomMines}
         isGameStart={isGameStart}
+        setIsGameStart={setIsGameStart}
       />
     </section>
   );

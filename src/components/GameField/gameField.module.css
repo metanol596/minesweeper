@@ -14,3 +14,7 @@
 .third {
   grid-template-columns: repeat(32, fit-content(10px));
 }
+
+.fieldBlock {
+  pointer-events: none;
+}
