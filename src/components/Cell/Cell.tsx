@@ -35,7 +35,7 @@ function Cell({
   const handleMineClick = () => {
     if (isGameStart && randomMines.includes(index)) {
       setIsMine(true);
-      //setIsGameStart(false);
+      setIsGameStart(false);
       setIsFieldBlock(true);
     }
   };
