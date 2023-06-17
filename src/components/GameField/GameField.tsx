@@ -45,6 +45,7 @@ function GameField({
           isGameStart={isGameStart}
           setIsGameStart={setIsGameStart}
           setIsFieldBlock={setIsFieldBlock}
+          isFieldBlock={isFieldBlock}
         />
       ))}
     </div>

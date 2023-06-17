@@ -27,6 +27,14 @@
   background-color: #a8a8a8;
 }
 
+.cell:disabled {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  pointer-events: none;
+}
+
 .mine {
   position: absolute;
   width: 19px;
