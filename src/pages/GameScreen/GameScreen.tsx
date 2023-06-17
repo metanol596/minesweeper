@@ -15,6 +15,7 @@ const FLAG_COUNT = 0;
 function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
   const [isGameStart, setIsGameStart] = useState<boolean>(false);
   const [randomMines, setRandomMines] = useState<number[]>([]);
+  const [isFieldBlock, setIsFieldBlock] = useState<boolean>(false);
 
   const handleCellClick = () => {
     if (!isGameStart) {
@@ -31,6 +32,7 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
   const handleRestartClick = () => {
     setIsGameStart(false);
     setRandomMines([]);
+    setIsFieldBlock(false);
   };
 
   return (
@@ -43,7 +45,7 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
           Restart
         </button>
       </div>
-      <Timer isGameStart={isGameStart} />
+      <Timer isGameStart={isGameStart} randomMines={randomMines} />
       <div className={s.count}>{minesCount - FLAG_COUNT}</div>
       <GameField
         cellsCount={cellsCount}
@@ -52,6 +54,8 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
         randomMines={randomMines}
         isGameStart={isGameStart}
         setIsGameStart={setIsGameStart}
+        isFieldBlock={isFieldBlock}
+        setIsFieldBlock={setIsFieldBlock}
       />
     </section>
   );

@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 
 import Cell from '../Cell/Cell';
@@ -12,6 +12,8 @@ interface GameFieldProps {
   randomMines: number[];
   isGameStart: boolean;
   setIsGameStart: (f: boolean) => void;
+  setIsFieldBlock: (f: boolean) => void;
+  isFieldBlock: boolean;
 }
 
 function GameField({
@@ -21,9 +23,9 @@ function GameField({
   randomMines,
   isGameStart,
   setIsGameStart,
+  isFieldBlock,
+  setIsFieldBlock,
 }: GameFieldProps): JSX.Element {
-  const [isFieldBlock, setIsFieldBlock] = useState<boolean>(false);
-
   return (
     <div
       className={cn(s.field, {

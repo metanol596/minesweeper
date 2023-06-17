@@ -4,9 +4,10 @@ import s from './timer.module.css';
 
 interface TimerProps {
   isGameStart: boolean;
+  randomMines: number[];
 }
 
-function Timer({ isGameStart }: TimerProps): JSX.Element {
+function Timer({ isGameStart, randomMines }: TimerProps): JSX.Element {
   const [seconds, setSeconds] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
 
@@ -29,6 +30,11 @@ function Timer({ isGameStart }: TimerProps): JSX.Element {
     } else {
       setSeconds((prev) => prev);
       setMinutes((prev) => prev);
+    }
+
+    if (randomMines.length === 0) {
+      setSeconds(0);
+      setMinutes(0);
     }
   });
 

@@ -26,6 +26,12 @@ function Cell({
 }: CellProps): JSX.Element {
   const [isMine, setIsMine] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (!isGameStart) {
+      setIsMine(false);
+    }
+  }, [randomMines]);
+
   const handleMineClick = () => {
     if (randomMines.includes(index)) {
       setIsMine(true);
