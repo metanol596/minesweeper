@@ -1,27 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { GameField, Timer } from '../../components';
 
 import s from './gameScreen.module.css';
 
+import { Level } from '../../App';
+
 interface GameScreenProps {
-  minesCount: number;
-  cellsCount: number;
+  currentLevel: Level;
 }
 
 const FLAG_COUNT = 0;
 
-function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
+function GameScreen({ currentLevel }: GameScreenProps): JSX.Element {
   const [isGameStart, setIsGameStart] = useState<boolean>(false);
   const [randomMines, setRandomMines] = useState<number[]>([]);
   const [isFieldBlock, setIsFieldBlock] = useState<boolean>(false);
 
-  const handleCellClick = () => {
+  const cellsCount = currentLevel.fieldSize.cols * currentLevel.fieldSize.rows;
+
+  const handleCellClick = (index: number) => {
     if (!isGameStart) {
-      let randomMines = Array.from({ length: cellsCount }, (_, i) => i)
+      let randomMines = Array.from(
+        { length: currentLevel.fieldSize.cols * currentLevel.fieldSize.rows },
+        (_, i) => i,
+      )
+        .filter((item) => item !== index)
         .sort(() => Math.random() - 0.5)
-        .slice(0, minesCount);
+        .slice(0, currentLevel.mines);
 
       setRandomMines(randomMines);
     }
@@ -35,6 +42,8 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
     setIsFieldBlock(false);
   };
 
+  console.log(randomMines);
+
   return (
     <section className={s.game}>
       <div className={s.gap}>
@@ -46,16 +55,17 @@ function GameScreen({ minesCount, cellsCount }: GameScreenProps): JSX.Element {
         </button>
       </div>
       <Timer isGameStart={isGameStart} randomMines={randomMines} />
-      <div className={s.count}>{minesCount - FLAG_COUNT}</div>
+      <div className={s.count}>{currentLevel.mines - FLAG_COUNT}</div>
       <GameField
         cellsCount={cellsCount}
-        minesCount={minesCount}
+        minesCount={currentLevel.mines}
         handleCellClick={handleCellClick}
         randomMines={randomMines}
         isGameStart={isGameStart}
         setIsGameStart={setIsGameStart}
         isFieldBlock={isFieldBlock}
         setIsFieldBlock={setIsFieldBlock}
+        fieldSize={currentLevel.fieldSize}
       />
     </section>
   );

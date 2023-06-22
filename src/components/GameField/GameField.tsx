@@ -8,12 +8,13 @@ import s from './gameField.module.css';
 interface GameFieldProps {
   cellsCount: number;
   minesCount: number;
-  handleCellClick: () => void;
+  handleCellClick: (index: number) => void;
   randomMines: number[];
   isGameStart: boolean;
   setIsGameStart: (f: boolean) => void;
   setIsFieldBlock: (f: boolean) => void;
   isFieldBlock: boolean;
+  fieldSize: { cols: number; rows: number };
 }
 
 function GameField({
@@ -25,6 +26,7 @@ function GameField({
   setIsGameStart,
   isFieldBlock,
   setIsFieldBlock,
+  fieldSize,
 }: GameFieldProps): JSX.Element {
   return (
     <div
@@ -46,6 +48,7 @@ function GameField({
           setIsGameStart={setIsGameStart}
           setIsFieldBlock={setIsFieldBlock}
           isFieldBlock={isFieldBlock}
+          fieldSize={fieldSize}
         />
       ))}
     </div>
