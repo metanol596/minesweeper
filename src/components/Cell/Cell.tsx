@@ -16,6 +16,7 @@ interface CellProps {
   setIsFieldBlock: (f: boolean) => void;
   isFieldBlock: boolean;
   fieldSize: { cols: number; rows: number };
+  handleCellEnter: (index: number) => void;
 }
 
 function Cell({
@@ -27,6 +28,7 @@ function Cell({
   setIsFieldBlock,
   isFieldBlock,
   fieldSize,
+  handleCellEnter,
 }: CellProps): JSX.Element {
   const [isMine, setIsMine] = useState<boolean>(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
@@ -110,10 +112,6 @@ function Cell({
     }
   };
 
-  const handleOver = (index: number) => {
-    console.log(index);
-  };
-
   return (
     <button
       className={cn(s.cell, {
@@ -124,7 +122,7 @@ function Cell({
         handleCellClick(index);
         handleMineClick();
       }}
-      onMouseEnter={() => handleOver(index)}
+      onMouseEnter={() => handleCellEnter(index)}
       disabled={isDisabled}>
       {isMine && <MineIcon className={s.mine} width={19} height={19} />}
       <span>{nearbyMinesCount}</span>

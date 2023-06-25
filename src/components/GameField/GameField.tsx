@@ -9,6 +9,7 @@ interface GameFieldProps {
   cellsCount: number;
   minesCount: number;
   handleCellClick: (index: number) => void;
+  handleCellEnter: (index: number) => void;
   randomMines: number[];
   isGameStart: boolean;
   setIsGameStart: (f: boolean) => void;
@@ -27,6 +28,7 @@ function GameField({
   isFieldBlock,
   setIsFieldBlock,
   fieldSize,
+  handleCellEnter,
 }: GameFieldProps): JSX.Element {
   return (
     <div
@@ -49,6 +51,7 @@ function GameField({
           setIsFieldBlock={setIsFieldBlock}
           isFieldBlock={isFieldBlock}
           fieldSize={fieldSize}
+          handleCellEnter={handleCellEnter}
         />
       ))}
     </div>

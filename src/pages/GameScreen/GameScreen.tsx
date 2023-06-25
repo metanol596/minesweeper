@@ -21,7 +21,13 @@ function GameScreen({ currentLevel }: GameScreenProps): JSX.Element {
   const cellsCount = currentLevel.fieldSize.cols * currentLevel.fieldSize.rows;
 
   const handleCellClick = (index: number) => {
+    setIsGameStart(true);
+  };
+
+  const handleCellEnter = (index: number) => {
     if (!isGameStart) {
+      console.log(index);
+
       let randomMines = Array.from(
         { length: currentLevel.fieldSize.cols * currentLevel.fieldSize.rows },
         (_, i) => i,
@@ -32,8 +38,7 @@ function GameScreen({ currentLevel }: GameScreenProps): JSX.Element {
 
       setRandomMines(randomMines);
     }
-
-    setIsGameStart(true);
+    console.log(randomMines);
   };
 
   const handleRestartClick = () => {
@@ -66,6 +71,7 @@ function GameScreen({ currentLevel }: GameScreenProps): JSX.Element {
         isFieldBlock={isFieldBlock}
         setIsFieldBlock={setIsFieldBlock}
         fieldSize={currentLevel.fieldSize}
+        handleCellEnter={handleCellEnter}
       />
     </section>
   );
